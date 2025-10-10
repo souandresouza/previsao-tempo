@@ -1,47 +1,47 @@
-/* Tema Light (Padrão) */
+/* Tema Light (Cores Opostas/Invertidas) */
 :root {
-    --bg-primary: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    --bg-secondary: rgba(255, 255, 255, 0.95);
-    --bg-header: linear-gradient(to right, #1e88e5, #0d47a1);
-    --bg-card: #ffffff;
-    --bg-detail: #f5f7fa;
-    --bg-saved: #e8f5e9;
-    --bg-error: #ffebee;
+    --bg-primary: linear-gradient(135deg, #e1c3dc 0%, #d5ad52 100%);
+    --bg-secondary: rgba(0, 0, 0, 0.95);
+    --bg-header: linear-gradient(to right, #e1771a, #f2b807);
+    --bg-card: #000000;
+    --bg-detail: #0a0805;
+    --bg-saved: #170a16;
+    --bg-error: #001411;
     
-    --text-primary: #333333;
-    --text-secondary: #666666;
-    --text-header: #ffffff;
-    --text-accent: #0d47a1;
-    --text-temperature: #1e88e5;
-    --text-success: #2e7d32;
-    --text-error: #f44336;
+    --text-primary: #cccccc;
+    --text-secondary: #999999;
+    --text-header: #000000;
+    --text-accent: #f2b807;
+    --text-temperature: #e1771a;
+    --text-success: #d182cd;
+    --text-error: #0bbcc9;
     
-    --border-color: #e0e0e0;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --focus-shadow: rgba(30, 136, 229, 0.2);
+    --border-color: #1f1f1f;
+    --shadow-color: rgba(255, 255, 255, 0.1);
+    --focus-shadow: rgba(207, 119, 26, 0.2);
 }
 
-/* Tema Dark */
+/* Tema Noir */
 [data-theme="dark"] {
-    --bg-primary: linear-gradient(135deg, #0f1a30 0%, #1a2b4d 100%);
-    --bg-secondary: rgba(30, 30, 40, 0.95);
-    --bg-header: linear-gradient(to right, #1565c0, #0a2a5c);
-    --bg-card: #1e1e2e;
-    --bg-detail: #2d2d3d;
-    --bg-saved: #1b3b1b;
-    --bg-error: #3a1f1f;
+    --bg-primary: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+    --bg-secondary: rgba(10, 10, 10, 0.98);
+    --bg-header: linear-gradient(to right, #111111, #000000);
+    --bg-card: #1a1a1a;
+    --bg-detail: #2a2a2a;
+    --bg-saved: #0a1a0a;
+    --bg-error: #1a0a0a;
     
-    --text-primary: #e0e0e0;
-    --text-secondary: #a0a0a0;
+    --text-primary: #e8e8e8;
+    --text-secondary: #b0b0b0;
     --text-header: #ffffff;
-    --text-accent: #64b5f6;
-    --text-temperature: #4fc3f7;
-    --text-success: #666666;
-    --text-error: #e57373;
+    --text-accent: #c0c0c0;
+    --text-temperature: #d0d0d0;
+    --text-success: #a0a0a0;
+    --text-error: #ff4444;
     
-    --border-color: #444444;
-    --shadow-color: rgba(0, 0, 0, 0.3);
-    --focus-shadow: rgba(100, 181, 246, 0.3);
+    --border-color: #333333;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --focus-shadow: rgba(200, 200, 200, 0.2);
 }
 
 /* Aplicação das variáveis */
@@ -62,7 +62,7 @@ header {
 
 .theme-toggle {
     color: var(--text-header);
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 label {
@@ -81,7 +81,7 @@ input[type="text"]:focus {
 
 .primary-btn {
     background-color: var(--text-accent);
-    color: white;
+    color: black;
 }
 
 .secondary-btn {
@@ -90,7 +90,7 @@ input[type="text"]:focus {
 }
 
 .test-btn {
-    background-color: #4caf50;
+    background-color: #b35053;
     color: white;
 }
 
