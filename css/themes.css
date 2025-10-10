@@ -1,24 +1,24 @@
 /* Tema Light (Cores Opostas/Invertidas) */
 :root {
-    --bg-primary: linear-gradient(135deg, #ffffff 0%, #111111 100%);
-    --bg-secondary: rgba(0, 0, 0, 0.95);
-    --bg-header: linear-gradient(to right, #ffffff, #111111);
-    --bg-card: #000000;
-    --bg-detail: #0a0805;
-    --bg-saved: #170a16;
-    --bg-error: #001411;
+    --bg-primary: linear-gradient(135deg, #000000 0%, #000000 100%);
+    --bg-secondary: rgba(10, 10, 10, 0.98);
+    --bg-header: linear-gradient(to right, #111111, #000000);
+    --bg-card: #1a1a1a;
+    --bg-detail: #2a2a2a;
+    --bg-saved: #07b307;
+    --bg-error: #db0707;
     
-    --text-primary: #cccccc;
-    --text-secondary: #999999;
-    --text-header: #000000;
-    --text-accent: #f2b807;
-    --text-temperature: #e1771a;
-    --text-success: #d182cd;
-    --text-error: #0bbcc9;
+    --text-primary: #2e2e2e;
+    --text-secondary: #1a1a1a;
+    --text-header: #ffffff;
+    --text-accent: #1a1a1a;
+    --text-temperature: #1a1a1a;
+    --text-success: #0a0a0a;
+    --text-error: #ff0000;
     
-    --border-color: #1f1f1f;
-    --shadow-color: rgba(255, 255, 255, 0.1);
-    --focus-shadow: rgba(207, 119, 26, 0.2);
+    --border-color: #7777777;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --focus-shadow: rgba(200, 200, 200, 0.2);
 }
 
 /* Tema Noir */
