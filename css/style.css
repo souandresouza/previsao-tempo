@@ -42,22 +42,6 @@ h1 {
     transition: all 0.3s ease;
 }
 
-.theme-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-    transform: scale(1.1);
-}
-
 .content {
     padding: 25px;
     transition: all 0.3s ease;
@@ -261,12 +245,5 @@ button {
     
     .temperature {
         font-size: 2.8rem;
-    }
-    
-    .theme-toggle {
-        position: relative;
-        top: auto;
-        right: auto;
-        margin-top: 10px;
     }
 }
