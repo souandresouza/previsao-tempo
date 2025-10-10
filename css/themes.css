@@ -2,7 +2,7 @@
 :root {
     --bg-primary: linear-gradient(135deg, #e1c3dc 0%, #d5ad52 100%);
     --bg-secondary: rgba(0, 0, 0, 0.95);
-    --bg-header: linear-gradient(to right, #e1771a, #f2b807);
+    --bg-header: linear-gradient(to right, #999999, #f2b807);
     --bg-card: #000000;
     --bg-detail: #0a0805;
     --bg-saved: #170a16;
@@ -23,7 +23,7 @@
 
 /* Tema Noir */
 [data-theme="dark"] {
-    --bg-primary: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+    --bg-primary: linear-gradient(135deg, #000000 0%, #000000 100%);
     --bg-secondary: rgba(10, 10, 10, 0.98);
     --bg-header: linear-gradient(to right, #111111, #000000);
     --bg-card: #1a1a1a;
