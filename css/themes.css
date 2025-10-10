@@ -2,7 +2,7 @@
 :root {
     --bg-primary: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
     --bg-secondary: #0a0a0a;
-    --bg-header: linear-gradient(to right, #111111, #000000);
+    --bg-header: linear-gradient(to right, #2a2a2a, #0a0a0a);
     --bg-card: #1a1a1a;
     --bg-detail: #2a2a2a;
     --bg-saved: #0a1a0a;
@@ -102,7 +102,7 @@ input[type="text"]:focus {
 }
 
 .test-btn {
-    background-color: #4caf50;
+    background-color: #111a7a;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -112,7 +112,7 @@ input[type="text"]:focus {
 }
 
 .test-btn:hover {
-    background-color: #111a7a;
+    background-color: #000000;
 }
 
 .danger-btn {
