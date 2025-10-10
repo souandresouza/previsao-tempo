@@ -1,29 +1,6 @@
-/* Tema Light (Cores Opostas/Invertidas) */
+/* Tema Dark */
 :root {
-    --bg-primary: linear-gradient(135deg, #000000 0%, #000000 100%);
-    --bg-secondary: rgba(10, 10, 10, 0.98);
-    --bg-header: linear-gradient(to right, #111111, #000000);
-    --bg-card: #1a1a1a;
-    --bg-detail: #2a2a2a;
-    --bg-saved: #07b307;
-    --bg-error: #db0707;
-    
-    --text-primary: #2e2e2e;
-    --text-secondary: #1a1a1a;
-    --text-header: #ffffff;
-    --text-accent: #1a1a1a;
-    --text-temperature: #1a1a1a;
-    --text-success: #0a0a0a;
-    --text-error: #ff0000;
-    
-    --border-color: #7777777;
-    --shadow-color: rgba(0, 0, 0, 0.5);
-    --focus-shadow: rgba(200, 200, 200, 0.2);
-}
-
-/* Tema Noir */
-[data-theme="dark"] {
-    --bg-primary: linear-gradient(135deg, #000000 0%, #000000 100%);
+    --bg-primary: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
     --bg-secondary: rgba(10, 10, 10, 0.98);
     --bg-header: linear-gradient(to right, #111111, #000000);
     --bg-card: #1a1a1a;
@@ -48,103 +25,203 @@
 body {
     background: var(--bg-primary);
     color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
 }
 
 .container {
     background-color: var(--bg-secondary);
     box-shadow: 0 10px 30px var(--shadow-color);
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 20px;
 }
 
 header {
     background: var(--bg-header);
     color: var(--text-header);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 .theme-toggle {
     color: var(--text-header);
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 label {
     color: var(--text-accent);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
 }
 
 input[type="text"] {
-    border-color: var(--border-color);
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px;
+    background-color: var(--bg-card);
     color: var(--text-primary);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 input[type="text"]:focus {
     border-color: var(--text-accent);
     box-shadow: 0 0 0 3px var(--focus-shadow);
+    outline: none;
 }
 
 .primary-btn {
     background-color: var(--text-accent);
     color: black;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
 }
 
 .secondary-btn {
     background-color: var(--bg-detail);
     color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.secondary-btn:hover {
+    background-color: var(--border-color);
 }
 
 .test-btn {
-    background-color: #b35053;
+    background-color: #4caf50;
     color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.test-btn:hover {
+    background-color: #45a049;
 }
 
 .danger-btn {
     background-color: var(--text-error);
     color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.danger-btn:hover {
+    background-color: #cc3333;
 }
 
 .weather-card {
     background: var(--bg-card);
     box-shadow: 0 5px 15px var(--shadow-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+    border: 1px solid var(--border-color);
 }
 
 .location {
     color: var(--text-accent);
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .coordinates {
     color: var(--text-secondary);
+    font-size: 0.9em;
+    margin-bottom: 15px;
 }
 
 .temperature {
     color: var(--text-temperature);
+    font-size: 3em;
+    font-weight: bold;
+    margin: 10px 0;
 }
 
 .weather-desc {
     color: var(--text-secondary);
+    font-size: 1.2em;
+    margin-bottom: 15px;
 }
 
 .detail-item {
     background-color: var(--bg-detail);
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+    border-left: 3px solid var(--text-accent);
 }
 
 .detail-label {
     color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 5px;
 }
 
 .detail-value {
     color: var(--text-primary);
+    font-size: 1.1em;
 }
 
 .last-update {
     color: var(--text-secondary);
+    font-style: italic;
+    text-align: right;
+    margin-top: 10px;
 }
 
 .error {
     color: var(--text-error);
     background-color: var(--bg-error);
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 4px solid var(--text-error);
+    margin: 15px 0;
 }
 
 .saved-info {
     background-color: var(--bg-saved);
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 4px solid var(--text-success);
+    margin: 15px 0;
 }
 
 .info-text {
     color: var(--text-success);
+    font-weight: 600;
 }
