@@ -1,14 +1,14 @@
 /* Tema Dark */
 :root {
     --bg-primary: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
-    --bg-secondary: rgba(10, 10, 10, 0.98);
+    --bg-secondary: #0a0a0a;
     --bg-header: linear-gradient(to right, #111111, #000000);
     --bg-card: #1a1a1a;
     --bg-detail: #2a2a2a;
     --bg-saved: #0a1a0a;
     --bg-error: #1a0a0a;
     
-    --text-primary: #e8e8e8;
+    --text-primary: #ffffff;
     --text-secondary: #b0b0b0;
     --text-header: #ffffff;
     --text-accent: #c0c0c0;
@@ -88,7 +88,7 @@ input[type="text"]:focus {
 }
 
 .secondary-btn {
-    background-color: #4caf50;
+    background-color: #222222;
     color: white;
     border: 1px solid var(--border-color);
     padding: 10px 20px;
@@ -98,7 +98,7 @@ input[type="text"]:focus {
 }
 
 .secondary-btn:hover {
-    background-color: var(--border-color);
+    background-color: #0a0a0a;
 }
 
 .test-btn {
