@@ -1,0 +1,150 @@
+/* Tema Light (Padrão) */
+:root {
+    --bg-primary: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    --bg-secondary: rgba(255, 255, 255, 0.95);
+    --bg-header: linear-gradient(to right, #1e88e5, #0d47a1);
+    --bg-card: #ffffff;
+    --bg-detail: #f5f7fa;
+    --bg-saved: #e8f5e9;
+    --bg-error: #ffebee;
+    
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-header: #ffffff;
+    --text-accent: #0d47a1;
+    --text-temperature: #1e88e5;
+    --text-success: #2e7d32;
+    --text-error: #f44336;
+    
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --focus-shadow: rgba(30, 136, 229, 0.2);
+}
+
+/* Tema Dark */
+[data-theme="dark"] {
+    --bg-primary: linear-gradient(135deg, #0f1a30 0%, #1a2b4d 100%);
+    --bg-secondary: rgba(30, 30, 40, 0.95);
+    --bg-header: linear-gradient(to right, #1565c0, #0a2a5c);
+    --bg-card: #1e1e2e;
+    --bg-detail: #2d2d3d;
+    --bg-saved: #1b3b1b;
+    --bg-error: #3a1f1f;
+    
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --text-header: #ffffff;
+    --text-accent: #64b5f6;
+    --text-temperature: #4fc3f7;
+    --text-success: #81c784;
+    --text-error: #e57373;
+    
+    --border-color: #444444;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --focus-shadow: rgba(100, 181, 246, 0.3);
+}
+
+/* Aplicação das variáveis */
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.container {
+    background-color: var(--bg-secondary);
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+header {
+    background: var(--bg-header);
+    color: var(--text-header);
+}
+
+.theme-toggle {
+    color: var(--text-header);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+label {
+    color: var(--text-accent);
+}
+
+input[type="text"] {
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+input[type="text"]:focus {
+    border-color: var(--text-accent);
+    box-shadow: 0 0 0 3px var(--focus-shadow);
+}
+
+.primary-btn {
+    background-color: var(--text-accent);
+    color: white;
+}
+
+.secondary-btn {
+    background-color: var(--bg-detail);
+    color: var(--text-primary);
+}
+
+.test-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.danger-btn {
+    background-color: var(--text-error);
+    color: white;
+}
+
+.weather-card {
+    background: var(--bg-card);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.location {
+    color: var(--text-accent);
+}
+
+.coordinates {
+    color: var(--text-secondary);
+}
+
+.temperature {
+    color: var(--text-temperature);
+}
+
+.weather-desc {
+    color: var(--text-secondary);
+}
+
+.detail-item {
+    background-color: var(--bg-detail);
+}
+
+.detail-label {
+    color: var(--text-secondary);
+}
+
+.detail-value {
+    color: var(--text-primary);
+}
+
+.last-update {
+    color: var(--text-secondary);
+}
+
+.error {
+    color: var(--text-error);
+    background-color: var(--bg-error);
+}
+
+.saved-info {
+    background-color: var(--bg-saved);
+}
+
+.info-text {
+    color: var(--text-success);
+}
