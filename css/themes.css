@@ -48,20 +48,6 @@ header {
     margin-bottom: 20px;
 }
 
-.theme-toggle {
-    color: var(--text-header);
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid var(--border-color);
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
 label {
     color: var(--text-accent);
     font-weight: 600;
@@ -86,7 +72,7 @@ input[type="text"]:focus {
 }
 
 .primary-btn {
-    background-color: var(--text-accent);
+    background-color: #4caf50;
     color: black;
     border: none;
     padding: 12px 24px;
@@ -102,8 +88,8 @@ input[type="text"]:focus {
 }
 
 .secondary-btn {
-    background-color: var(--bg-detail);
-    color: var(--text-primary);
+    background-color: #4caf50;
+    color: white;
     border: 1px solid var(--border-color);
     padding: 10px 20px;
     border-radius: 5px;
