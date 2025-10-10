@@ -1,8 +1,8 @@
 /* Tema Light (Cores Opostas/Invertidas) */
 :root {
-    --bg-primary: linear-gradient(135deg, #e1c3dc 0%, #d5ad52 100%);
+    --bg-primary: linear-gradient(135deg, #ffffff 0%, #111111 100%);
     --bg-secondary: rgba(0, 0, 0, 0.95);
-    --bg-header: linear-gradient(to right, #999999, #f2b807);
+    --bg-header: linear-gradient(to right, #ffffff, #111111);
     --bg-card: #000000;
     --bg-detail: #0a0805;
     --bg-saved: #170a16;
