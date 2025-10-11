@@ -1,213 +1,152 @@
-/* Tema Dark */
+/* Tema Light (Padrão) */
 :root {
-    --bg-primary: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
-    --bg-secondary: #0a0a0a;
-    --bg-header: linear-gradient(to right, #2a2a2a, #0a0a0a);
-    --bg-card: #1a1a1a;
-    --bg-detail: #2a2a2a;
-    --bg-saved: #0a1a0a;
-    --bg-error: #1a0a0a;
+    --bg-primary: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    --bg-secondary: rgba(255, 255, 255, 0.95);
+    --bg-header: linear-gradient(to right, #1e88e5, #0d47a1);
+    --bg-card: #ffffff;
+    --bg-detail: #f5f7fa;
+    --bg-saved: #e8f5e9;
+    --bg-error: #ffebee;
     
-    --text-primary: #ffffff;
-    --text-secondary: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
     --text-header: #ffffff;
-    --text-accent: #c0c0c0;
-    --text-temperature: #d0d0d0;
-    --text-success: #a0a0a0;
-    --text-error: #ff4444;
+    --text-accent: #0d47a1;
+    --text-temperature: #1e88e5;
+    --text-success: #2e7d32;
+    --text-error: #f44336;
     
-    --border-color: #333333;
-    --shadow-color: rgba(0, 0, 0, 0.5);
-    --focus-shadow: rgba(200, 200, 200, 0.2);
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --focus-shadow: rgba(30, 136, 229, 0.2);
+}
+
+/* Tema Dark */
+[data-theme="dark"] {
+    --bg-primary: linear-gradient(135deg, #0f1a30 0%, #1a2b4d 100%);
+    --bg-secondary: rgba(30, 30, 40, 0.95);
+    --bg-header: linear-gradient(to right, #1565c0, #0a2a5c);
+    --bg-card: #1e1e2e;
+    --bg-detail: #2d2d3d;
+    --bg-saved: #1b3b1b;
+    --bg-error: #3a1f1f;
+    
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --text-header: #ffffff;
+    --text-accent: #64b5f6;
+    --text-temperature: #4fc3f7;
+    --text-success: #666666;
+    --text-error: #e57373;
+    
+    --border-color: #444444;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --focus-shadow: rgba(100, 181, 246, 0.3);
 }
 
 /* Aplicação das variáveis */
 body {
     background: var(--bg-primary);
     color: var(--text-primary);
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
 }
 
 .container {
     background-color: var(--bg-secondary);
     box-shadow: 0 10px 30px var(--shadow-color);
-    border-radius: 10px;
-    margin: 20px auto;
-    max-width: 1200px;
-    padding: 20px;
 }
 
 header {
     background: var(--bg-header);
     color: var(--text-header);
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+}
+
+.theme-toggle {
+    color: var(--text-header);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 label {
     color: var(--text-accent);
-    font-weight: 600;
-    display: block;
-    margin-bottom: 5px;
 }
 
 input[type="text"] {
-    border: 2px solid var(--border-color);
-    border-radius: 5px;
-    padding: 10px;
-    background-color: var(--bg-card);
+    border-color: var(--border-color);
     color: var(--text-primary);
-    width: 100%;
-    box-sizing: border-box;
 }
 
 input[type="text"]:focus {
     border-color: var(--text-accent);
     box-shadow: 0 0 0 3px var(--focus-shadow);
-    outline: none;
 }
 
 .primary-btn {
-    background-color: #777777;
-    color: black;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.primary-btn:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
+    background-color: var(--text-accent);
+    color: white;
 }
 
 .secondary-btn {
-    background-color: #222222;
-    color: white;
-    border: 1px solid var(--border-color);
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.secondary-btn:hover {
-    background-color: #222222;
+    background-color: var(--bg-detail);
+    color: var(--text-primary);
 }
 
 .test-btn {
-    background-color: #111a7a;
+    background-color: #4caf50;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.test-btn:hover {
-    background-color: #111a7a;
 }
 
 .danger-btn {
     background-color: var(--text-error);
     color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.danger-btn:hover {
-    background-color: #cc3333;
 }
 
 .weather-card {
     background: var(--bg-card);
     box-shadow: 0 5px 15px var(--shadow-color);
-    border-radius: 8px;
-    padding: 20px;
-    margin: 15px 0;
-    border: 1px solid var(--border-color);
 }
 
 .location {
     color: var(--text-accent);
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 10px;
 }
 
 .coordinates {
     color: var(--text-secondary);
-    font-size: 0.9em;
-    margin-bottom: 15px;
 }
 
 .temperature {
     color: var(--text-temperature);
-    font-size: 3em;
-    font-weight: bold;
-    margin: 10px 0;
 }
 
 .weather-desc {
     color: var(--text-secondary);
-    font-size: 1.2em;
-    margin-bottom: 15px;
 }
 
 .detail-item {
     background-color: var(--bg-detail);
-    padding: 15px;
-    border-radius: 5px;
-    margin: 10px 0;
-    border-left: 3px solid var(--text-accent);
 }
 
 .detail-label {
     color: var(--text-secondary);
-    font-weight: 600;
-    margin-bottom: 5px;
 }
 
 .detail-value {
     color: var(--text-primary);
-    font-size: 1.1em;
 }
 
 .last-update {
     color: var(--text-secondary);
-    font-style: italic;
-    text-align: right;
-    margin-top: 10px;
 }
 
 .error {
     color: var(--text-error);
     background-color: var(--bg-error);
-    padding: 15px;
-    border-radius: 5px;
-    border-left: 4px solid var(--text-error);
-    margin: 15px 0;
 }
 
 .saved-info {
     background-color: var(--bg-saved);
-    padding: 15px;
-    border-radius: 5px;
-    border-left: 4px solid var(--text-success);
-    margin: 15px 0;
 }
 
 .info-text {
     color: var(--text-success);
-    font-weight: 600;
 }
+
+altere para cores noir no tema dark e cores opostas no tema light
