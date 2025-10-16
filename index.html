@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão do Tempo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(to right, #1e88e5, #0d47a1);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 25px;
+        }
+        
+        .input-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .input-field {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #0d47a1;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input[type="text"]:focus {
+            border-color: #1e88e5;
+            box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.2);
+            outline: none;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            padding: 14px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .primary-btn {
+            background-color: #1e88e5;
+            color: white;
+            flex: 2;
+        }
+        
+        .primary-btn:hover {
+            background-color: #1565c0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 136, 229, 0.4);
+        }
+        
+        .secondary-btn {
+            background-color: #f5f5f5;
+            color: #333;
+            flex: 1;
+        }
+        
+        .secondary-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .danger-btn {
+            background-color: #f44336;
+            color: white;
+            flex: 1;
+        }
+        
+        .danger-btn:hover {
+            background-color: #d32f2f;
+        }
+        
+        #weatherResult {
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+        }
+        
+        .weather-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .location {
+            font-size: 1.8rem;
+            color: #0d47a1;
+            margin-bottom: 10px;
+        }
+        
+        .weather-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .weather-icon {
+            width: 120px;
+            height: 120px;
+        }
+        
+        .temperature {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #1e88e5;
+        }
+        
+        .weather-desc {
+            font-size: 1.5rem;
+            color: #666;
+            text-transform: capitalize;
+            margin-bottom: 15px;
+        }
+        
+        .weather-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .detail-item {
+            background-color: #f5f7fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .detail-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .last-update {
+            margin-top: 15px;
+            font-style: italic;
+            color: #777;
+        }
+        
+        .error {
+            color: #f44336;
+            background-color: #ffebee;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+        }
+        
+        .saved-info {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .info-text {
+            color: #2e7d32;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 600px) {
+            .input-group {
+                flex-direction: column;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .weather-main {
+                flex-direction: column;
+            }
+            
+            .temperature {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Previsão do Tempo</h1>
+            <p class="subtitle">Obtenha a previsão para qualquer localização a cada 10 minutos</p>
+        </header>
+        
+        <div class="content">
+            <div class="input-group">
+                <div class="input-field">
+                    <label for="apiKey">Chave da API OpenWeather</label>
+                    <input type="text" id="apiKey" placeholder="Insira sua chave da API">
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <div class="input-field">
+                    <label for="latitude">Latitude</label>
+                    <input type="text" id="latitude" placeholder="Ex: -23.5505">
+                </div>
+                <div class="input-field">
+                    <label for="longitude">Longitude</label>
+                    <input type="text" id="longitude" placeholder="Ex: -46.6333">
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button class="primary-btn" onclick="pesquisarClima()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                    Pesquisar
+                </button>
+                <button class="secondary-btn" onclick="salvarConfiguracoes()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
+                    </svg>
+                    Salvar Configurações
+                </button>
+                <button class="danger-btn" onclick="limparDados()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                    </svg>
+                    Limpar Dados
+                </button>
+            </div>
+            
+            <div id="savedInfo" class="saved-info">
+                <p class="info-text">Configurações salvas com sucesso! Os dados serão carregados automaticamente na próxima visita.</p>
+            </div>
+            
+            <div id="weatherResult" class="weather-card">
+                <!-- Resultado da previsão será inserido aqui -->
+            </div>
+            
+            <div id="errorMessage" class="error">
+                <!-- Mensagens de erro serão inseridas aqui -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Variáveis globais
+        let intervaloAtualizacao;
+        
+        // Carregar configurações salvas quando a página é carregada
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarConfiguracoes();
+            
+            // Se já tivermos todos os dados salvos, buscar a previsão automaticamente
+            const apiKey = localStorage.getItem('weatherApiKey');
+            const latitude = localStorage.getItem('weatherLatitude');
+            const longitude = localStorage.getItem('weatherLongitude');
+            
+            if (apiKey && latitude && longitude) {
+                document.getElementById('savedInfo').style.display = 'block';
+                pesquisarClima();
+            }
+        });
+        
+        // Função para salvar configurações no LocalStorage
+        function salvarConfiguracoes() {
+            const apiKey = document.getElementById('apiKey').value;
+            const latitude = document.getElementById('latitude').value;
+            const longitude = document.getElementById('longitude').value;
+            
+            if (apiKey) {
+                localStorage.setItem('weatherApiKey', apiKey);
+            }
+            
+            if (latitude) {
+                localStorage.setItem('weatherLatitude', latitude);
+            }
+            
+            if (longitude) {
+                localStorage.setItem('weatherLongitude', longitude);
+            }
+            
+            // Mostrar mensagem de confirmação
+            const savedInfo = document.getElementById('savedInfo');
+            savedInfo.style.display = 'block';
+            setTimeout(() => {
+                savedInfo.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Função para carregar configurações do LocalStorage
+        function carregarConfiguracoes() {
+            const savedApiKey = localStorage.getItem('weatherApiKey');
+            const savedLatitude = localStorage.getItem('weatherLatitude');
+            const savedLongitude = localStorage.getItem('weatherLongitude');
+            
+            if (savedApiKey) {
+                document.getElementById('apiKey').value = savedApiKey;
+            }
+            
+            if (savedLatitude) {
+                document.getElementById('latitude').value = savedLatitude;
+            }
+            
+            if (savedLongitude) {
+                document.getElementById('longitude').value = savedLongitude;
+            }
+        }
+        
+        // Função para limpar dados do LocalStorage
+        function limparDados() {
+            localStorage.removeItem('weatherApiKey');
+            localStorage.removeItem('weatherLatitude');
+            localStorage.removeItem('weatherLongitude');
+            
+            // Limpar campos do formulário
+            document.getElementById('apiKey').value = '';
+            document.getElementById('latitude').value = '';
+            document.getElementById('longitude').value = '';
+            
+            // Parar atualizações automáticas
+            if (intervaloAtualizacao) {
+                clearInterval(intervaloAtualizacao);
+            }
+            
+            // Esconder resultado
+            document.getElementById('weatherResult').style.display = 'none';
+            
+            // Mostrar mensagem de confirmação
+            alert('Dados limpos com sucesso!');
+        }
+        
+        // Função principal para pesquisar o clima
+        function pesquisarClima() {
+            const apiKey = document.getElementById('apiKey').value;
+            const latitude = document.getElementById('latitude').value;
+            const longitude = document.getElementById('longitude').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Validação dos campos
+            if (!apiKey || !latitude || !longitude) {
+                mostrarErro("Por favor, preencha todos os campos: chave da API, latitude e longitude.");
+                return;
+            }
+            
+            // Validação básica de coordenadas
+            if (isNaN(latitude) || isNaN(longitude) || latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) {
+                mostrarErro("Por favor, insira coordenadas válidas. Latitude: -90 a 90, Longitude: -180 a 180.");
+                return;
+            }
+            
+            // Limpar mensagens de erro anteriores
+            errorMessage.style.display = 'none';
+            
+            // Mostrar carregamento
+            const weatherResult = document.getElementById('weatherResult');
+            weatherResult.innerHTML = "<p>Carregando dados meteorológicos...</p>";
+            weatherResult.style.display = 'block';
+            
+            // Buscar dados climáticos
+            buscarDadosClimaticos(apiKey, latitude, longitude);
+            
+            // Configurar atualização automática a cada 10 minutos (600000 ms)
+            if (intervaloAtualizacao) {
+                clearInterval(intervaloAtualizacao);
+            }
+            
+            intervaloAtualizacao = setInterval(() => {
+                console.log("Atualizando dados meteorológicos...");
+                buscarDadosClimaticos(apiKey, latitude, longitude);
+            }, 600000);
+        }
+        
+        // Função para buscar dados da API OpenWeather
+        function buscarDadosClimaticos(apiKey, lat, lon) {
+            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=pt_br`;
+            
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Erro na API: ${response.status} - ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    exibirClima(data);
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar dados do clima:', error);
+                    mostrarErro("Não foi possível obter os dados. Verifique sua chave da API, as coordenadas e sua conexão com a internet.");
+                });
+        }
+        
+        // Função para exibir os dados climáticos
+        function exibirClima(dados) {
+            const weatherResult = document.getElementById('weatherResult');
+            
+            // Verificar se a API retornou um erro
+            if (dados.cod && dados.cod !== 200) {
+                mostrarErro(`Erro: ${dados.message}`);
+                return;
+            }
+            
+            // Extrair informações dos dados
+            const cidade = dados.name || "Localização desconhecida";
+            const descricao = dados.weather[0].description;
+            const iconeCodigo = dados.weather[0].icon;
+            const temperatura = Math.round(dados.main.temp);
+            const sensacaoTermica = Math.round(dados.main.feels_like);
+            const umidade = dados.main.humidity;
+            const pressao = dados.main.pressure;
+            const vento = (dados.wind.speed * 3.6).toFixed(1); // Converter m/s para km/h
+            
+            // URL do ícone
+            const urlIcone = `https://openweathermap.org/img/wn/${iconeCodigo}@2x.png`;
+            
+            // Criar HTML para exibir os dados
+            weatherResult.innerHTML = `
+                <h2 class="location">${cidade}</h2>
+                <div class="weather-main">
+                    <img class="weather-icon" src="${urlIcone}" alt="${descricao}">
+                    <div class="temperature">${temperatura}°C</div>
+                </div>
+                <div class="weather-desc">${descricao}</div>
+                
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Sensação Térmica</div>
+                        <div class="detail-value">${sensacaoTermica}°C</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Umidade</div>
+                        <div class="detail-value">${umidade}%</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Pressão</div>
+                        <div class="detail-value">${pressao} hPa</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Vento</div>
+                        <div class="detail-value">${vento} km/h</div>
+                    </div>
+                </div>
+                
+                <div class="last-update">
+                    Última atualização: ${new Date().toLocaleTimeString('pt-BR')}
+                </div>
+            `;
+            
+            weatherResult.style.display = 'block';
+        }
+        
+        // Função para exibir mensagens de erro
+        function mostrarErro(mensagem) {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = mensagem;
+            errorMessage.style.display = 'block';
+            
+            // Esconder resultado se houver erro
+            document.getElementById('weatherResult').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
